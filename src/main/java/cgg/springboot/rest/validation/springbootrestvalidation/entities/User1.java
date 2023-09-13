@@ -12,6 +12,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -35,9 +36,10 @@ public class User1 implements UserDetails {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
+    @Column(name="user_name",nullable=false,length=100)
     private String name;
-
-
+    
+    @Column(unique=true)
     private String email;
 
     private String password;
@@ -49,7 +51,7 @@ public class User1 implements UserDetails {
     
     @ManyToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
     @JoinTable(name="user_role",
-    joinColumns=@JoinColumn(name="user",referencedColumnName="id"),
+    joinColumns=@JoinColumn(name="user1",referencedColumnName="id"),
     inverseJoinColumns=@JoinColumn(name="role",referencedColumnName="id")
     )
     private Set<Role> roles=new HashSet<>();
