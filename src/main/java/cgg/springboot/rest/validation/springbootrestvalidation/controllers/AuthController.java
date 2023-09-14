@@ -46,8 +46,7 @@ public class AuthController {
 	private ModelMapper mapper;
 	
 	@PostMapping("/login")
-	public ResponseEntity<JwtAuthResponse> createToken(@RequestBody JwtAuthRequest jwtRequest) throws Exception
-	{
+	public ResponseEntity<JwtAuthResponse> createToken(@RequestBody JwtAuthRequest jwtRequest) throws Exception{
 		
 		System.out.println(jwtRequest);
 		

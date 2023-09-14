@@ -50,7 +50,7 @@ public class UserService {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
     
         //roles
-        Role role = this.roleRepo.findById(AppConstants.NORMAL_USER).get();
+        Role role = this.roleRepo.findById(AppConstants.ROLE_NORMAL).get();
     
         user.getRoles().add(role);
         

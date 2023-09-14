@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
@@ -32,8 +33,14 @@ public class UserDto {
     
     private Set<RoleDto> roles= new HashSet<>();
     
-    // @JsonIgnore
-    // public String getPassword() {
-    // 	return this.password;
-    // }
+    @JsonIgnore
+    public String getPassword() {
+    	return this.password;
+    }
+    
+    @JsonProperty
+    public void setPassword(String password){
+    this.password=password;
+    }
+    	
 }
